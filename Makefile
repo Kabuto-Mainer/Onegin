@@ -21,6 +21,7 @@ build: O_massive.o O_sort.o ONEGIN.o O_support.o O_print.o
 
 gitcom:
 	git add Makefile O_const.h O_massive.cpp O_massive.h O_print.cpp O_print.h O_result.txt O_sort.cpp O_sort.h O_support.cpp O_support.h ONEGIN.cpp
+	git add ONEGIN.txt
 	git commit -m "$(m)"
 	git push
 
