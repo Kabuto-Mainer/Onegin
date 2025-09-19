@@ -10,8 +10,8 @@ size_t f_getline_e(FILE* file_address, char buffer[MAX_LENGTH]);
 
 int input_to_buffer(all_inf_struct* struct_address);
 
-char* crt_buffer();
-size_t fnd_chr(char* string, const char symbol);
+char* create_buffer();
+size_t find_chr(char* string, const char symbol);
 size_t pass_space(char* string_place, size_t index);
 
 

@@ -12,7 +12,7 @@
 size_t input_onegin_rectangle(char buffer[][MAX_LENGTH]) {
     assert(buffer);
 
-    FILE* file_address = fop_file(NAME_INPUT_FILE, "r");
+    FILE* file_address = fopen_file(NAME_INPUT_FILE, "r");
 
     size_t counter = 0;
 
@@ -25,7 +25,7 @@ size_t input_onegin_rectangle(char buffer[][MAX_LENGTH]) {
         }
         counter++;
     }
-    fcls_file(file_address);
+    fclose_file(file_address);
     return counter++;
 }
 
@@ -33,7 +33,7 @@ size_t input_onegin_rectangle(char buffer[][MAX_LENGTH]) {
 size_t input_for_address_with_segmentation_error(char* massive_of_address[AMOUNT_OF_STRINGS]) { // Ошибки не вышло
     assert(massive_of_address);
 
-    FILE* file_address = fop_file(NAME_INPUT_FILE, "r");
+    FILE* file_address = fopen_file(NAME_INPUT_FILE, "r");
 
     size_t counter = 0;
     char buffer[MAX_LENGTH] = {};
@@ -48,7 +48,7 @@ size_t input_for_address_with_segmentation_error(char* massive_of_address[AMOUNT
         }
         counter++;
     }
-    fcls_file(file_address);
+    fclose_file(file_address);
     return counter;
 }
 
@@ -56,7 +56,7 @@ size_t input_for_address_with_segmentation_error(char* massive_of_address[AMOUNT
 size_t input_for_address_with_segmentation_true(char* massive_of_address[AMOUNT_OF_STRINGS]) {
     assert(massive_of_address);
 
-    FILE* file_address = fop_file(NAME_INPUT_FILE, "r");
+    FILE* file_address = fopen_file(NAME_INPUT_FILE, "r");
 
     size_t counter = 0;
     char buffer[MAX_LENGTH] = {};
@@ -71,7 +71,7 @@ size_t input_for_address_with_segmentation_true(char* massive_of_address[AMOUNT_
         }
         counter++;
     }
-    fcls_file(file_address);
+    fclose_file(file_address);
     return counter;
 }
 
@@ -102,8 +102,8 @@ size_t f_getline_e(FILE* file_address, char buffer[MAX_LENGTH]) {
 
 
 int input_to_buffer(all_inf_struct* struct_address) {
-    char* string_place = crt_buffer();
-    int file_address = op_file(NAME_INPUT_FILE, "r");
+    char* string_place = create_buffer();
+    int file_address = open_file(NAME_INPUT_FILE, "r");
 
     size_t amount_symbols = read(file_address, string_place, sizeof(char) * (MAX_SIZE + 1)); // Возможно стоит создать буфер с точным размером
     string_place[amount_symbols] = '\0';
@@ -121,7 +121,7 @@ int input_to_buffer(all_inf_struct* struct_address) {
         struct_address->mass_of_struct[counter].address = string_place + i;
         size_t buffer_len = 0;
 
-        buffer_len = fnd_chr(string_place + i, '\n');
+        buffer_len = find_chr(string_place + i, '\n');
 
         if (buffer_len < 1) {
             break;
@@ -139,12 +139,12 @@ int input_to_buffer(all_inf_struct* struct_address) {
     struct_address->max_length = max_len;
     struct_address->adr_strings = string_place;
 
-    cls_file (file_address);
+    close_file (file_address);
     return 0;
 }
 
 
-size_t fnd_chr (char* string, const char symbol) {
+size_t find_chr (char* string, const char symbol) {
     assert(string);
 
     if (*(string) == symbol) {
@@ -179,7 +179,7 @@ size_t pass_space(char* string_place, size_t index) {
 }
 
 
-char* crt_buffer() {
+char* create_buffer() {
     char* buffer_address = (char*) calloc(MAX_SIZE + 1, sizeof(char));
 
     if (buffer_address == NULL) {

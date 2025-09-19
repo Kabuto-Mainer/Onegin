@@ -28,6 +28,9 @@ gitcom:
 run:
 	./Onegin.exe
 
+runarg:
+	./Onegin.exe $(arg)
+
 clean:
 	rm -rf *.o
 	@echo "Program clean"

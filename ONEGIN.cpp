@@ -8,31 +8,39 @@
 #include "O_support.h"
 #include "O_print.h"
 
-int main() { // Test main
-    printf("%s\n", NAME_INPUT_FILE);
-    printf("%s = %zu bait\n", NAME_INPUT_FILE, file_size_check(NAME_INPUT_FILE));
+int main(int argc, char* argv[]) {
+    printf("%s%s is used for import data\n%s", _P_, NAME_INPUT_FILE, _N_);
+    printf("%sSize %s = %zu bait\n%s", _P_, NAME_INPUT_FILE, file_size_check(NAME_INPUT_FILE), _N_);
 
-    FILE* result_file = fop_file(NAME_RESULT_FILE, "w");
+
+    // printf("%s\n", argv[0]);
+    if (!strcmp(argv[1], CAT)) {
+        draw_cat();
+    }
+
+    FILE* result_file = fopen_file(NAME_RESULT_FILE, "w");
 
     all_inf_struct main_struct = {0, 0,
                                         NULL, NULL};
 
     if (input_to_buffer(&main_struct) == -1) {
-        printf("ERROR\n");
+        printf("%sERROR\n%s", _R_, _N_);
         return 0;
     }
-    prt_head_wiki_file(result_file);
-    sort_bubble(&main_struct, *compar_bubble_str);
-    prt_to_file(&main_struct, result_file);
-
-    prt_head_rap_file(result_file);
-    qsort(main_struct.mass_of_struct, main_struct.amount_strings, sizeof(adr_len), &compar_for_qsort_rvs);
-    prt_to_file(&main_struct, result_file);
-
-    prt_orig_to_file(&main_struct, result_file);
+    sort_bubble(&main_struct, *compar_str);
+    print_to_consol(&main_struct);
+//     print_head_wiki_file(result_file);
+//     sort_bubble(&main_struct, *compar_str);
+//     print_to_file(&main_struct, result_file);
+//
+//     print_head_rap_file(result_file);
+//     qsort(main_struct.mass_of_struct, main_struct.amount_strings, sizeof(adr_len), &compar_for_qsort_rvs);
+//     print_to_file(&main_struct, result_file);
+//
+//     print_orig_to_file(&main_struct, result_file);
 
     free(main_struct.adr_strings);
-    fcls_file(result_file);
+    fclose_file(result_file);
 
     return 0;
 }

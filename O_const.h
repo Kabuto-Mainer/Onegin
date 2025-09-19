@@ -2,9 +2,10 @@
 #define DEFINE_CONST_H
 
 
-const char NAME_INPUT_FILE[] = "ONEGIN.txt";
+const char NAME_INPUT_FILE[] = "TEST_FILE.txt";
 const char NAME_RESULT_FILE[] = "RESULT.txt";
 const char NAME_TEST_FILE[] = "O_test_result.txt";
+const char CAT[] = "meow";
 
 const int SKIP_CHAR = 'в'; // DO NOT CHANGE
 

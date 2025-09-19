@@ -27,11 +27,11 @@
 
 size_t file_size_check(const char* name_file);
 
-FILE* fop_file(const char* name_file, const char* type_open);
-void fcls_file(FILE* address);
+FILE* fopen_file(const char* name_file, const char* type_open);
+void fclose_file(FILE* address);
 
-int op_file(const char* name_file, const char* type_open);
-int cls_file(int address);
+int open_file(const char* name_file, const char* type_open);
+int close_file(int address);
 
 
 #endif // O_SUPPORT_H
