@@ -14,14 +14,12 @@ void sort_bubble(all_inf_struct* struct_address, comparison_t compare_function) 
     adr_len* mass_of_struct = struct_address->mass_of_struct;
     adr_len buffer = {NULL, 0};
 
-    for (size_t i = 0; i < struct_address->amount_strings; i++) {
-        for (size_t index = i + 1; index < struct_address->amount_strings; index++) {
+    for (size_t i_1 = 0; i_1 < struct_address->amount_strings; i_1++) {
+        for (size_t i_2 = i_1 + 1; i_2 < struct_address->amount_strings; i_2++) {
             // printf("Index = %zu\n", index);
 
-            if (compare_function(mass_of_struct + i, mass_of_struct + index) > 0) {
-                buffer = mass_of_struct[i];
-                mass_of_struct[i] = mass_of_struct[index]; // Передача указателей и их разыменовывание будет медленнее
-                mass_of_struct[index] = buffer;
+            if (compare_function(mass_of_struct + i_1, mass_of_struct + i_2) > 0) {
+                swap(mass_of_struct, i_1, i_2);
             }
         }
         // mass_of_struct[i] = *min_element;
@@ -114,6 +112,19 @@ int compar_for_qsort_rvs(const void* input_struct_1, const void* input_struct_2)
 
     return compar_rvs(struct_1, struct_2);
 }
+
+
+void swap(adr_len* massive_address, size_t i_1, size_t i_2) {
+    // Assert in compare function
+
+    adr_len buffer = *(massive_address + i_1);
+    *(massive_address + i_1) = *(massive_address + i_2);
+    *(massive_address + i_2) = buffer;
+}
+
+
+
+
 
 // int own_qsort(all_inf_struct* struct_address,
 //

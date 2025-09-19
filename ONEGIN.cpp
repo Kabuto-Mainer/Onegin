@@ -27,17 +27,17 @@ int main(int argc, char* argv[]) {
         printf("%sERROR\n%s", _R_, _N_);
         return 0;
     }
+    // sort_bubble(&main_struct, *compar_str);
+    // print_to_consol(&main_struct);
+    print_head_wiki_file(result_file);
     sort_bubble(&main_struct, *compar_str);
-    print_to_consol(&main_struct);
-//     print_head_wiki_file(result_file);
-//     sort_bubble(&main_struct, *compar_str);
-//     print_to_file(&main_struct, result_file);
-//
-//     print_head_rap_file(result_file);
-//     qsort(main_struct.mass_of_struct, main_struct.amount_strings, sizeof(adr_len), &compar_for_qsort_rvs);
-//     print_to_file(&main_struct, result_file);
-//
-//     print_orig_to_file(&main_struct, result_file);
+    print_to_file(&main_struct, result_file);
+
+    print_head_rap_file(result_file);
+    qsort(main_struct.mass_of_struct, main_struct.amount_strings, sizeof(adr_len), &compar_for_qsort_rvs);
+    print_to_file(&main_struct, result_file);
+
+    print_orig_to_file(&main_struct, result_file);
 
     free(main_struct.adr_strings);
     fclose_file(result_file);
