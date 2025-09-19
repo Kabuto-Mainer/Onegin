@@ -10,7 +10,7 @@
 void sort_bubble(all_inf_struct* struct_address, comparison_t compare_function) {
     assert(struct_address);
 
-    adr_len* mass_of_struct = struct_address->mass_of_struct; // TODO: Возможно тут сикфолт
+    adr_len* mass_of_struct = struct_address->mass_of_struct; // TODO: Возможно тут сикфолт. Можно выдохнуть, его нету
     adr_len buffer = {NULL, 0};
 
     for (size_t i = 0; i < struct_address->amount_strings; i++) {
@@ -139,5 +139,10 @@ int compar_for_qsort_rvs(const void* input_struct_1, const void* input_struct_2)
         return difference;
     }
 }
+
+
+
+
+
 
 

@@ -112,8 +112,10 @@ int input_to_buffer(all_inf_struct* struct_address) {
     size_t max_len = 0;
 
     for (size_t i = 0; i < amount_symbols; ) {
+
         if (counter >= AMOUNT_OF_STRINGS) {
-            break;
+            return -1;
+            // break;
         }
 
         struct_address->mass_of_struct[counter].address = string_place + i;
@@ -142,7 +144,7 @@ int input_to_buffer(all_inf_struct* struct_address) {
 }
 
 
-size_t fnd_chr (const char* string, const char symbol) {
+size_t fnd_chr (char* string, const char symbol) {
     assert(string);
 
     if (*(string) == symbol) {
@@ -155,6 +157,12 @@ size_t fnd_chr (const char* string, const char symbol) {
         }
         if (*(string + i) == '\0') {
             return 0;
+        }
+        if (*(string + i) == SKIP_CHAR) {
+            *(string + i) = '\'';
+            *(string + i + 1) = ' ';
+            *(string + i + 2) = ' ';
+            i += 2;
         }
     }
     return 0;
