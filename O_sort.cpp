@@ -80,7 +80,7 @@ int compar_bubble_rvs(adr_len* struct_1, adr_len* struct_2) {
 }
 
 
-int compar_for_qsort_rvs(const void* input_struct_1, const void* input_struct_2) {
+int compar_for_qsort_str(const void* input_struct_1, const void* input_struct_2) {
     assert(input_struct_1);
     assert(input_struct_2);
 
@@ -89,19 +89,22 @@ int compar_for_qsort_rvs(const void* input_struct_1, const void* input_struct_2)
     adr_len* struct_1 = (adr_len*) input_struct_1;
     adr_len* struct_2 = (adr_len*) input_struct_2;
 
-    size_t i_1 = struct_1->length - 1;
-    size_t i_2 = struct_2->length - 1;
+    size_t max_len_1 = struct_1->length - 1;
+    size_t max_len_2 = struct_2->length - 1;
+
+    size_t i_1 = 0;
+    size_t i_2 = 0;
 
     while (true) {
-        while (i_1 > 0 && !isalpha(*(struct_1->address + i_1))) {
-            i_1--;
+        while (i_1 < max_len_1 && !isalpha(*(struct_1->address + i_1))) {
+            i_1++;
         }
-        while (i_2 > 0 && !isalpha(*(struct_2->address + i_2))) {
-            i_2--;
+        while (i_2 < max_len_2 && !isalpha(*(struct_2->address + i_2))) {
+            i_2++;
         }
         if ((difference = toupper(*(struct_1->address + i_1)) - toupper(*(struct_2->address + i_2))) == 0) {
-            i_1--;
-            i_2--;
+            i_1++;
+            i_2++;
             continue;
         }
         return difference;

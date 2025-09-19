@@ -25,10 +25,7 @@ size_t input_onegin_rectangle(char buffer[][MAX_LENGTH]) {
         }
         counter++;
     }
-    if (fclose(file_address)) {
-        printf("ERROR with closing file in true_input\n");
-        return -1;
-    }
+    fcls_file(file_address);
     return counter++;
 }
 
@@ -51,10 +48,7 @@ size_t input_for_address_with_segmentation_error(char* massive_of_address[AMOUNT
         }
         counter++;
     }
-    if (fclose(file_address)) {
-        printf("ERROR with closing file in true_input\n");
-        return -1;
-    }
+    fcls_file(file_address);
     return counter;
 }
 

@@ -10,8 +10,8 @@ const int SKIP_CHAR = 'в'; // DO NOT CHANGE
 
 const size_t MAX_LENGTH = 100;
 const size_t AMOUNT_OF_STRINGS = 5500;
-const size_t MAX_SIZE = 1e6;
-const int AMOUNT_SPACE = 3;
+const size_t MAX_SIZE = 180000; // Size of ONEGIN.txt Do not change
+const int AMOUNT_SPACE = 5;
 
 struct adr_len {
     char* address;
